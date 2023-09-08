@@ -1078,9 +1078,9 @@ class TableComponent extends React.Component {
                 </Droppable>
               </DragDropContext>
               <div style={{ paddingTop: '8px' }}>
-                {columns?.value?.length === 0 && <NoListItem text={'There are no columns'} />}
+                {columns?.value?.length === 0 && <NoListItem text={'There are no columns'} dataCy={`-columns`} />}
                 <div style={{ marginTop: '8px' }}>
-                  <AddNewButton data-cy={`button-add-column`} onClick={this.addNewColumn}>
+                  <AddNewButton dataCy={`button-add-column`} onClick={this.addNewColumn}>
                     {this.props.t('widget.Table.addColumn', ' New column')}
                   </AddNewButton>
                 </div>
@@ -1097,8 +1097,10 @@ class TableComponent extends React.Component {
         <div className="field mb-2 mt-2">
           <div className="row g-2">
             <div>{actions.value.map((action, index) => this.renderActionButton(action, index))}</div>
-            {actions.value.length === 0 && <NoListItem text={'There are no action buttons'} />}
-            <AddNewButton data-cy="button-add-new-action-button" onClick={this.addNewAction}>
+            {actions.value.length === 0 && (
+              <NoListItem text={'There are no action buttons'} dataCy={`-action-button`} />
+            )}
+            <AddNewButton dataCy="button-add-new-action-button" onClick={this.addNewAction}>
               New action button
             </AddNewButton>
           </div>
